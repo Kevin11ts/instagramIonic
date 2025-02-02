@@ -7,11 +7,24 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <app-layout>
+    <ion-list>
+      <app-card-post
+        *ngFor="let insta of contentInsta" 
+        [username]="insta.username"
+        [location]="insta.location"
+        [createAt]="insta.createAt"
+        [avatarUrl]="insta.avatarUrl"
+        [contentUrl]="insta.contentUrl"
+        [username]="insta.username"
+        [likes]="insta.likes"
+        [description]="insta.description"
+      ></app-card-post>
+    </ion-list>
+  </app-layout>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <!--Arreglo ciclo for de 20 elementos, buscador donde sale la galeria completa y tambien los rels-->
+  
+  
 </ion-content>
+
