@@ -16,7 +16,6 @@ import { ComponentsModule } from "../components/components.module";
     ExploreContainerComponentModule,
     Tab1PageRoutingModule,
     ComponentsModule,
-    ComponentsModule
 ],
   declarations: [Tab1Page]
 })

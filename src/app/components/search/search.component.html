@@ -1,0 +1,16 @@
+<!-- Contenedor de la cuadrícula -->
+<div class="grid-container">
+  <div *ngFor="let item of content" class="grid-item">
+    <!-- Mostrar imagen o video -->
+    <img *ngIf="isImage(item.contentUrl)" [src]="item.contentUrl" alt="Content" />
+    <video
+    *ngIf="isVideo(item.contentUrl)"
+    [src]="item.contentUrl"
+    autoplay
+    muted
+    defaultMuted
+    loop
+    playsinline
+  ></video>
+  </div>
+</div>

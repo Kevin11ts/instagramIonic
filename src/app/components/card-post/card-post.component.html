@@ -1,4 +1,4 @@
-<ion-card>
+<ion-card class="custom-card">
   <ion-item>
     <ion-avatar aria-hidden="true" slot="start">
       <img [alt]="avatarUrl" [src]="avatarUrl" />
@@ -11,40 +11,59 @@
     <ion-icon name="ellipsis-horizontal" slot="end"></ion-icon>
   </ion-item>
 
-  <!--<img alt="Silhouette of mountains"
-    src="https://ionicframework.com/docs/img/demos/card-media.png" 
-    https://ionicframework.com/docs/img/demos/avatar.svg
-    />
-    -->
-    <img [alt]="contentUrl" [src]="contentUrl"/>
+  <img [alt]="contentUrl" [src]="contentUrl" />
 
-  <ion-item class="ion-no-padding">
+  <ion-item class="ion-no-padding" style="--border-style: none;">
     <ion-buttons slot="start">
-      <ion-icon style="transform: scale(0.9);" size="large" slot="icon-only"
-        name="heart-outline"></ion-icon>
-      <ion-icon style="transform: scale(0.8);" size="large" slot="icon-only"
-        name="chatbubble-outline"></ion-icon>
-      <ion-icon style="transform: scale(0.85);" size="large" slot="icon-only"
-        name="paper-plane-outline"></ion-icon>
+      <!-- Ícono de corazón -->
+      <ion-icon
+        style="transform: scale(0.9);"
+        size="large"
+        slot="icon-only"
+        [name]="liked ? 'heart' : 'heart-outline'"
+        [color]="liked ? 'danger' : ''"
+        (click)="toggleLike()"
+      ></ion-icon>
+
+      <ion-icon
+        style="transform: scale(0.8);"
+        size="large"
+        slot="icon-only"
+        name="chatbubble-outline"
+      ></ion-icon>
+
+      <ion-icon
+        style="transform: scale(0.85);"
+        size="large"
+        slot="icon-only"
+        name="paper-plane-outline"
+      ></ion-icon>
     </ion-buttons>
+
+    <!-- Ícono de guardar -->
     <ion-buttons slot="end">
-      <ion-icon style="transform: scale(0.85);" size="large" slot="icon-only"
-        name="bookmark-outline"></ion-icon>
+      <ion-icon
+        style="transform: scale(0.85);"
+        size="large"
+        slot="icon-only"
+        [name]="saved ? 'bookmark' : 'bookmark-outline'"
+        [color]="saved ? 'black' : ''"
+        (click)="toggleSave()"
+      ></ion-icon>
     </ion-buttons>
   </ion-item>
 
-  <ion-item>
+  <ion-item style="--border-style: none;">
     <ion-label>
       <strong>{{likes}}</strong>
       <br>
     </ion-label>
   </ion-item>
 
-  <ion-item>
+  <ion-item style="--border-style: none;">
     <ion-label>
       <strong>{{username}}</strong>
       {{description}}
     </ion-label>
   </ion-item>
-
 </ion-card>

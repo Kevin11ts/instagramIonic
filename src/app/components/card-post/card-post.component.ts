@@ -33,6 +33,16 @@ export class CardPostComponent  implements OnInit {
 
   constructor() { }
 
+  // Método para manejar el clic en el ícono de corazón
+  toggleLike() {
+    this.liked = !this.liked;
+  }
+
+  // Método para manejar el clic en el ícono de guardar
+  toggleSave() {
+    this.saved = !this.saved;
+  }
+
   ngOnInit() {}
 
 }
