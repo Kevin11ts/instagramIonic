@@ -1,12 +1,22 @@
-<ion-content [fullscreen]="true">
-    <app-reels
-      *ngFor="let reel of reels"
-      [username]="reel.username"
-      [avatarUrl]="reel.avatarUrl"
-      [videoUrl]="reel.videoUrl"
-      [music]="reel.music"
-      [likes]="reel.likes"
-      [comments]="reel.comments"
-      [description]="reel.description"
-    ></app-reels>
-  </ion-content>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Reels
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" (swipe)="onSwipe($event)">
+  <app-reels
+    *ngFor="let reel of reels; let i = index"
+    [ngClass]="{ 'hidden': i !== currentIndex }"
+    [username]="reel.username"
+    [avatarUrl]="reel.avatarUrl"
+    [videoUrl]="reel.videoUrl"
+    [music]="reel.music"
+    [likes]="reel.likes"
+    [comments]="reel.comments"
+    [description]="reel.description"
+    [share]="reel.share"
+  ></app-reels>
+</ion-content>

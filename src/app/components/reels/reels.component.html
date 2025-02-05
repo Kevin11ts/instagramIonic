@@ -1,51 +1,53 @@
-<ion-card class="reel-card">
-  <!-- Información del usuario -->
-  <div class="user-info">
-    <ion-avatar aria-hidden="true">
-      <img [alt]="username" [src]="avatarUrl" />
-    </ion-avatar>
-    <div class="user-details">
-      <strong>{{ username }}</strong>
-      <ion-note>{{ music }}</ion-note>
-    </div>
-    <ion-icon name="ellipsis-horizontal" class="more-icon"></ion-icon>
-  </div>
-
+<ion-card class="reel-card" #reelCard class="reel-card hidden">
   <!-- Video -->
   <div class="video-container">
     <video
       #videoPlayer
       [src]="videoUrl"
       (click)="togglePlay()"
-      autoplay
       muted
       loop
       playsinline
     ></video>
   </div>
 
-  <!-- Íconos de interacción -->
-  <div class="interaction-buttons">
-    <div class="interaction-button" (click)="toggleLike()">
-      <ion-icon [name]="liked ? 'heart' : 'heart-outline'"></ion-icon>
-      <p>{{ likes }}</p>
+  <!-- Información del usuario y descripción -->
+  <div class="info-container">
+    <div class="user-info">
+      <ion-avatar aria-hidden="true">
+        <img [alt]="username" [src]="avatarUrl" />
+      </ion-avatar>
+      <div class="user-details">
+        <strong>{{ username }}</strong>
+        <div>
+        </div>
+        <div>
+          <ion-note>{{ music }}</ion-note>
+        </div>
+      </div>
     </div>
-    <div class="interaction-button">
-      <ion-icon name="chatbubble-outline"></ion-icon>
-      <p>{{ comments }}</p>
-    </div>
-    <div class="interaction-button">
-      <ion-icon name="paper-plane-outline"></ion-icon>
-      <p>Compartir</p>
-    </div>
-    <div class="interaction-button" (click)="toggleSave()">
-      <ion-icon [name]="saved ? 'bookmark' : 'bookmark-outline'"></ion-icon>
+    <div class="description">
+      {{ description }}
     </div>
   </div>
 
-  <!-- Descripción -->
-  <div class="description">
-    <strong>{{ username }}</strong>
-    {{ description }}
+  <!-- Botones de interacción -->
+  <div class="interaction-buttons">
+    <div class="interaction-button" (click)="toggleLike()">
+      <ion-icon [name]="liked ? 'heart' : 'heart-outline'"
+                [ngStyle]="{'color': liked ? 'red' : 'white'}"></ion-icon>
+      <p>{{ likes }}</p>
+    </div>
+    <div class="interaction-button">
+      <ion-icon name="chatbubble-outline" style="color: white"></ion-icon>
+      <p>{{ comments }}</p>
+    </div>
+    <div class="interaction-button">
+      <ion-icon name="paper-plane-outline" style="color: white"></ion-icon>
+      <p>{{ share }}</p>
+    </div>
+    <div class="interaction-button">
+      <ion-icon name="ellipsis-vertical" style="color: white"></ion-icon>
+    </div>
   </div>
 </ion-card>

@@ -1,0 +1,33 @@
+.story-list {
+    padding: 16px 0 8px;
+    border-bottom: none; /* Eliminamos el borde inferior */
+  }
+  
+  .story-list .scroll-horizontal {
+    padding-left: 16px;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    display: flex; /* Aseguramos la alineación en línea */
+  }
+  
+  .story-list .scroll-item {
+    position: relative;
+    display: inline-block;
+    margin-right: 16px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  
+  .story-list .item-label {
+    font-size: 13px;
+    margin-top: 8px;
+    color: #777; /* Color tenue */
+  }
+  
+  ion-avatar.has-update {
+    padding: 2px;
+    border: 2px solid var(--ion-color-pink-purple); /* Aplica el borde con el color personalizado */
+  }
+  

@@ -1,11 +1,12 @@
 <ion-card class="custom-card">
-  <ion-item>
-    <ion-avatar aria-hidden="true" slot="start">
+  <ion-item lines="none" class="custom-header">
+    <ion-avatar aria-hidden="true" slot="start" class="small-avatar avatar-left">
       <img [alt]="avatarUrl" [src]="avatarUrl" />
     </ion-avatar>
-    <ion-label>
-      <strong>{{username}}</strong> - {{createAt}}
-      <br>
+    <ion-label class="custom-label">
+      <div class="label-container">
+        <strong>{{username}}</strong> - <span>{{createAt}}</span>
+      </div>
       <ion-note>{{location}}</ion-note>
     </ion-label>
     <ion-icon name="ellipsis-horizontal" slot="end"></ion-icon>
@@ -15,7 +16,6 @@
 
   <ion-item class="ion-no-padding" style="--border-style: none;">
     <ion-buttons slot="start">
-      <!-- Ícono de corazón -->
       <ion-icon
         style="transform: scale(0.9);"
         size="large"
@@ -24,14 +24,12 @@
         [color]="liked ? 'danger' : ''"
         (click)="toggleLike()"
       ></ion-icon>
-
       <ion-icon
         style="transform: scale(0.8);"
         size="large"
         slot="icon-only"
         name="chatbubble-outline"
       ></ion-icon>
-
       <ion-icon
         style="transform: scale(0.85);"
         size="large"
@@ -39,8 +37,6 @@
         name="paper-plane-outline"
       ></ion-icon>
     </ion-buttons>
-
-    <!-- Ícono de guardar -->
     <ion-buttons slot="end">
       <ion-icon
         style="transform: scale(0.85);"
@@ -53,17 +49,45 @@
     </ion-buttons>
   </ion-item>
 
-  <ion-item style="--border-style: none;">
+  <ion-item lines="none" class="likes-description">
     <ion-label>
       <strong>{{likes}}</strong>
       <br>
-    </ion-label>
-  </ion-item>
-
-  <ion-item style="--border-style: none;">
-    <ion-label>
-      <strong>{{username}}</strong>
-      {{description}}
+      <strong>{{username}}</strong> {{description}}
     </ion-label>
   </ion-item>
 </ion-card>
+
+<style>
+  .custom-header {
+    position: relative;
+  }
+
+  .custom-header ion-label {
+    margin-left: 0.1px; /* Ajusta el margen para evitar que el avatar tape el texto */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .custom-header .label-container {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaciado entre username y createAt */
+    position: relative;
+    z-index: 1;
+  }
+
+  .small-avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .avatar-left {
+    margin-left: -10px; /* Mueve el avatar más hacia la izquierda */
+  }
+
+  .likes-description {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+</style>

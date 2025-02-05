@@ -14,18 +14,21 @@ export class ReelsComponent implements OnInit {
   @Input() likes: string = '0';
   @Input() comments: string = '0';
   @Input() description: string = '';
+  @Input() share: string = '';
 
   @ViewChild('videoPlayer') videoPlayer!: ElementRef<HTMLVideoElement>;
+  @ViewChild('reelCard', { static: false }) reelCard!: ElementRef<HTMLElement>;
 
   liked: boolean = false;
   saved: boolean = false;
+  
 
   constructor() {}
 
   ngOnInit() {
-    // Reproduce el video automáticamente al cargarse
+    // No reproducir automáticamente el video al inicializarse
     if (this.videoPlayer) {
-      this.videoPlayer.nativeElement.play();
+      this.videoPlayer.nativeElement.pause();
     }
   }
 
@@ -40,5 +43,17 @@ export class ReelsComponent implements OnInit {
   togglePlay() {
     const video = this.videoPlayer.nativeElement;
     video.paused ? video.play() : video.pause();
+  }
+
+  show() {
+    this.reelCard.nativeElement.classList.remove('hidden');
+    this.videoPlayer.nativeElement.muted = false; // Activa el sonido
+    this.videoPlayer.nativeElement.play(); // Reproduce el video
+  }
+
+  hide() {
+    this.reelCard.nativeElement.classList.add('hidden');
+    this.videoPlayer.nativeElement.muted = true; // Silencia el video
+    this.videoPlayer.nativeElement.pause(); // Pausa el video
   }
 }
